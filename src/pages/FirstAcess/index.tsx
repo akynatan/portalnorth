@@ -60,6 +60,7 @@ const FirstAcess: React.FC = () => {
             title: 'Erro ao buscar dados do CNPJ',
             description: err?.response?.data?.error,
           });
+          return;
         }
 
         addToast({
