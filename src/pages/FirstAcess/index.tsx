@@ -83,7 +83,7 @@ const FirstAcess: React.FC = () => {
             <h1>Primeiro Acesso</h1>
             <InputCPF name="document" icon={FiUser} placeholder="Documento" />
             <Button type="submit">Próximo</Button>
-            <Link to="sign-in">Voltar</Link>
+            <Link to="login">Voltar</Link>
           </Form>
         </AnimationContainer>
       </Content>
