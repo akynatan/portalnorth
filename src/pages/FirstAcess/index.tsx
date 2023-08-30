@@ -4,8 +4,6 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
-
-import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -24,7 +22,6 @@ interface FirstAcessFormData {
 
 const FirstAcess: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const { firstAccess } = useAuth();
   const { addToast } = useToast();
 
   const history = useHistory();
@@ -65,7 +62,7 @@ const FirstAcess: React.FC = () => {
         });
       }
     },
-    [addToast, history, firstAccess],
+    [addToast, history],
   );
 
   return (

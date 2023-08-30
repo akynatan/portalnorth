@@ -5,7 +5,6 @@ import { FiDownload, FiList } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import MenuHeader from '../../components/MenuHeader';
-import GoBack from '../../components/GoBack';
 
 import api from '../../services/api';
 import { Invoice } from '../../types/Invoice';

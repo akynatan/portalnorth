@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable func-names */
 import React, { InputHTMLAttributes, useEffect } from 'react';
 import { IconBaseProps } from 'react-icons';
 import $ from 'jquery';
