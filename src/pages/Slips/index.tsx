@@ -93,6 +93,7 @@ const Slips: React.FC = () => {
             <tr className="table100-head">
               <th>Data Emissão</th>
               <th>Data Vencimento</th>
+              <th>Código de Barra</th>
               <th>Valor</th>
               <th>Baixar</th>
             </tr>
@@ -103,6 +104,7 @@ const Slips: React.FC = () => {
                 <tr key={slip.NUFIN}>
                   <td className="column1">{slip.DTNEG}</td>
                   <td className="column1">{slip.DTVENC}</td>
+                  <td className="column1">{slip.CODIGOBARRA}</td>
                   <td className="column1">{formatCurrency(slip.VLRDESDOB)}</td>
                   <td className="column1">
                     <FiDownload
