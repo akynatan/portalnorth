@@ -9,8 +9,9 @@ import MenuHeader from '../../components/MenuHeader';
 import api from '../../services/api';
 import { Invoice } from '../../types/Invoice';
 import { useToast } from '../../hooks/toast';
+import { formatCurrency } from '../../helpers';
 
-import { Container, Content } from './styles';
+import { Container, Content, Header } from './styles';
 
 const Invoices: React.FC = () => {
   const { addToast } = useToast();
@@ -24,10 +25,18 @@ const Invoices: React.FC = () => {
       .then(res => {
         setInvoices(res.data);
       })
+      .catch(err => {
+        const description = err?.response?.data?.error || '';
+        addToast({
+          type: 'error',
+          title: 'Erro ao buscar notas fiscais',
+          description,
+        });
+      })
       .finally(() => {
         setIsFetching(false);
       });
-  }, []);
+  }, [addToast]);
 
   const downloadInvoice = useCallback(
     invoice_id => {
@@ -54,6 +63,14 @@ const Invoices: React.FC = () => {
             type: 'success',
             title: 'Documento baixado!',
           });
+        })
+        .catch(err => {
+          const description = err?.response?.data?.error || '';
+          addToast({
+            type: 'error',
+            title: 'Erro ao buscar notas fiscais',
+            description,
+          });
         });
     },
     [addToast],
@@ -64,11 +81,12 @@ const Invoices: React.FC = () => {
       <MenuHeader />
 
       <Content>
+        <Header>Notas Fiscais</Header>
         <table>
           <thead>
             <tr className="table100-head">
               <th>Data</th>
-              <th>Número</th>
+              <th>Nº Nota</th>
               <th>Valor</th>
               <th>Baixar</th>
               <th>Visualizar Boletos</th>
@@ -80,7 +98,7 @@ const Invoices: React.FC = () => {
                 <tr key={invoice.NUNOTA}>
                   <td className="column1">{invoice.DTNEG}</td>
                   <td className="column1">{invoice.NUMNOTA}</td>
-                  <td className="column1">{invoice.VLRNOTA}</td>
+                  <td className="column1">{formatCurrency(invoice.VLRNOTA)}</td>
                   <td className="column1">
                     <FiDownload
                       onClick={() => downloadInvoice(invoice?.NUNOTA)}

@@ -16,7 +16,6 @@ interface SignInCredentials {
 
 interface AuthContextData {
   client: Client;
-  firstAccess(document: string): Promise<void>;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
   updateClient(client: Client): void;
@@ -41,14 +40,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
     return {} as AuthState;
   });
-
-  const firstAccess = useCallback(async (document: string) => {
-    const response = await api.post('/clients/firstaccess', {
-      document: document.replace(/[^\w\s]/gi, ''),
-    });
-    const { client } = response.data;
-    localStorage.setItem('@PortalNorth:client', JSON.stringify(client));
-  }, []);
 
   const signIn = useCallback(async ({ document, password }) => {
     const response = await api.post('/sessions', {
@@ -87,7 +78,6 @@ const AuthProvider: React.FC = ({ children }) => {
     <AuthContext.Provider
       value={{
         client: data.client,
-        firstAccess,
         signIn,
         signOut,
         updateClient,

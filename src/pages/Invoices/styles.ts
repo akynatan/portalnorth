@@ -2,6 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
+export const Header = styled.div`
+  color: #0d254f;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
 export const Content = styled.main`
   max-width: 1400px;
   margin: 64px auto;

@@ -43,11 +43,12 @@ export const AnimationContainer = styled.div`
     text-align: center;
 
     h1 {
+      color: #0d254f;
       margin-bottom: 24px;
     }
 
     a {
-      color: #f4ede8;
+      color: #0d254f;
       display: block;
       margin-top: 24px;
       text-decoration: none;

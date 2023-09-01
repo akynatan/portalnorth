@@ -7,9 +7,9 @@ const api = axios.create({
       return true;
     }
 
-    if (status === 401 && window.location.pathname !== '/') {
-      localStorage.removeItem('@AdminBizz:token');
-      localStorage.removeItem('@AdminBizz:user');
+    if (status === 401 && window.location.pathname !== '/login') {
+      localStorage.removeItem('@PortalNorth:token');
+      localStorage.removeItem('@PortalNorth:user');
 
       window.location.href = '';
     }

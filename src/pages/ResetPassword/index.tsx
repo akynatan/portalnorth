@@ -51,11 +51,18 @@ const ResetPassword: React.FC = () => {
           throw new Error();
         }
 
-        await api.post('/password/reset', {
-          password,
-          password_confirmation,
-          token,
-        });
+        await api
+          .post('/password/reset', {
+            password,
+            password_confirmation,
+            token,
+          })
+          .then(() => {
+            addToast({
+              type: 'success',
+              title: 'Senha alterada com sucesso',
+            });
+          });
 
         history.push('/');
       } catch (err) {

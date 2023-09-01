@@ -10,6 +10,7 @@ import GoBack from '../../components/GoBack';
 import api from '../../services/api';
 import { Slip } from '../../types/Slip';
 import { useToast } from '../../hooks/toast';
+import { formatCurrency } from '../../helpers';
 
 import { Container, Header, Content } from './styles';
 
@@ -26,10 +27,18 @@ const Slips: React.FC = () => {
       .then(res => {
         setSlips(res.data);
       })
+      .catch(err => {
+        const description = err?.response?.data?.error || '';
+        addToast({
+          type: 'error',
+          title: 'Erro ao buscar notas fiscais',
+          description,
+        });
+      })
       .finally(() => {
         setIsFetching(false);
       });
-  }, [id]);
+  }, [id, addToast]);
 
   const downloadSlip = useCallback(
     ({ numSlip, codBank, slipId }) => {
@@ -55,6 +64,14 @@ const Slips: React.FC = () => {
           addToast({
             type: 'success',
             title: 'Documento baixado!',
+          });
+        })
+        .catch(err => {
+          const description = err?.response?.data?.error || '';
+          addToast({
+            type: 'error',
+            title: 'Erro ao buscar notas fiscais',
+            description,
           });
         });
     },
@@ -86,7 +103,7 @@ const Slips: React.FC = () => {
                 <tr key={slip.NUFIN}>
                   <td className="column1">{slip.DTNEG}</td>
                   <td className="column1">{slip.DTVENC}</td>
-                  <td className="column1">{slip.VLRDESDOB}</td>
+                  <td className="column1">{formatCurrency(slip.VLRDESDOB)}</td>
                   <td className="column1">
                     <FiDownload
                       onClick={() => {
