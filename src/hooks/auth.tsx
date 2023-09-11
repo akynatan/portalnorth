@@ -33,7 +33,19 @@ const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@PortalNorth:token');
     const client = localStorage.getItem('@PortalNorth:client');
 
-    if (client && token) {
+    if (
+      client &&
+      token &&
+      client !== '' &&
+      client !== 'undefined' &&
+      client !== undefined &&
+      client !== 'null' &&
+      client !== null &&
+      token !== 'undefined' &&
+      token !== undefined &&
+      token !== 'null' &&
+      token !== null
+    ) {
       api.defaults.headers.authorization = `Bearer ${token}`;
       return { token, client: JSON.parse(client) };
     }
