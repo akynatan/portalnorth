@@ -7,7 +7,7 @@ const agent = new https.Agent({
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || '/api',
-  httpAgent: agent,
+  httpsAgent: agent,
   validateStatus: (status: number) => {
     if (status >= 200 && status < 300) {
       return true;
