@@ -68,7 +68,7 @@ const Invoices: React.FC = () => {
           const description = err?.response?.data?.error || '';
           addToast({
             type: 'error',
-            title: 'Erro ao buscar notas fiscais',
+            title: 'Erro ao fazer download da nota fiscal',
             description,
           });
         });

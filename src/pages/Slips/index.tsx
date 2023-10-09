@@ -31,7 +31,7 @@ const Slips: React.FC = () => {
         const description = err?.response?.data?.error || '';
         addToast({
           type: 'error',
-          title: 'Erro ao buscar notas fiscais',
+          title: 'Erro ao buscar boletos',
           description,
         });
       })
@@ -70,7 +70,7 @@ const Slips: React.FC = () => {
           const description = err?.response?.data?.error || '';
           addToast({
             type: 'error',
-            title: 'Erro ao buscar notas fiscais',
+            title: 'Erro ao fazer download boleto',
             description,
           });
         });
