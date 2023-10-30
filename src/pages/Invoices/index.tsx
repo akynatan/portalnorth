@@ -101,9 +101,9 @@ const Invoices: React.FC = () => {
                   <td className="column1">{formatCurrency(invoice.VLRNOTA)}</td>
                   <td className="column1">
                     <FiDownload
-                      onClick={() =>
-                        downloadInvoice(invoice?.NUNOTA, invoice?.CODTIPOPER)
-                      }
+                      onClick={() => {
+                        downloadInvoice(invoice?.NUNOTA, invoice?.CODTIPOPER);
+                      }}
                     />
                   </td>
                   <td className="column1">
