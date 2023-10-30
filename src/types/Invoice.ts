@@ -3,4 +3,5 @@ export interface Invoice {
   NUMNOTA: string;
   DTNEG: string;
   VLRNOTA: string;
+  CODTIPOPER: string;
 }

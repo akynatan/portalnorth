@@ -39,11 +39,11 @@ const Invoices: React.FC = () => {
   }, [addToast]);
 
   const downloadInvoice = useCallback(
-    invoice_id => {
+    (invoice_id, model_invoice) => {
       api
         .post(
           `/invoices/${invoice_id}/download`,
-          {},
+          { model_invoice },
           {
             responseType: 'blob',
           },
@@ -101,7 +101,9 @@ const Invoices: React.FC = () => {
                   <td className="column1">{formatCurrency(invoice.VLRNOTA)}</td>
                   <td className="column1">
                     <FiDownload
-                      onClick={() => downloadInvoice(invoice?.NUNOTA)}
+                      onClick={() =>
+                        downloadInvoice(invoice?.NUNOTA, invoice?.CODTIPOPER)
+                      }
                     />
                   </td>
                   <td className="column1">
