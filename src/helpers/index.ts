@@ -1,16 +1,18 @@
 export const formatCurrency = (numeroString: string): string => {
-  const numeroLimpo = numeroString.replace(/[^\d]/g, '');
+  try {
+    const numero = parseFloat(numeroString);
 
-  const numero = parseFloat(numeroLimpo);
+    if (Number.isNaN(numero)) {
+      return numeroString;
+    }
 
-  if (Number.isNaN(numero)) {
+    const valorFormatado = numero.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+
+    return valorFormatado;
+  } catch {
     return numeroString;
   }
-
-  const valorFormatado = numero.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-
-  return valorFormatado;
 };
