@@ -79,7 +79,7 @@ const Profile: React.FC = () => {
             : {}),
         };
 
-        const response = await api.put('/profile', formData);
+        const response = await api.put(`/profile/${client.id}`, formData);
 
         if (response.data) {
           updateClient(response.data);
@@ -93,21 +93,25 @@ const Profile: React.FC = () => {
         }
 
         history.push('/');
-      } catch (err) {
+      } catch (err: any) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
           return;
         }
 
+        const message =
+          err?.response?.data?.error ||
+          'Ocorreu um erro ao atualizar  perfil, tente novamente.';
+
         addToast({
           type: 'error',
           title: 'Erro na atualização!',
-          description: 'Ocorreu um erro ao atualizar  perfil, tente novamente.',
+          description: message,
         });
       }
     },
-    [updateClient, addToast, history],
+    [updateClient, client, addToast, history],
   );
 
   const handleAvatarChange = useCallback(
