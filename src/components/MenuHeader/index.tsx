@@ -1,7 +1,8 @@
-/* eslint-disable global-require */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiPower } from 'react-icons/fi';
+
+import logoImg from '../../assets/logoo.png';
 
 import { useAuth } from '../../hooks/auth';
 
@@ -15,7 +16,7 @@ const MenuHeader: React.FC = () => {
     <Header>
       <HeaderContent>
         <Link to="/">
-          <img src="../../assets/logoo.png" alt="PortalNorth" />
+          <img src={logoImg} alt="PortalNorth" />
         </Link>
 
         <Profile>
