@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiPower } from 'react-icons/fi';
 
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/logoo.png';
 
 import { useAuth } from '../../hooks/auth';
 
