@@ -8,7 +8,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/logoo.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
