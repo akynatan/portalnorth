@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiPower } from 'react-icons/fi';
 
-import logoImg from '../../assets/logoo.png';
-
 import { useAuth } from '../../hooks/auth';
 
 import { Header, HeaderContent, Profile } from './styles';
@@ -16,7 +14,7 @@ const MenuHeader: React.FC = () => {
     <Header>
       <HeaderContent>
         <Link to="/">
-          <img src={logoImg} alt="PortalNorth" />
+          <img src="/images/logoo.png" alt="PortalNorth" />
         </Link>
 
         <Profile>
