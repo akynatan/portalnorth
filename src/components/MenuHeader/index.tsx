@@ -14,7 +14,7 @@ const MenuHeader: React.FC = () => {
     <Header>
       <HeaderContent>
         <Link to="/">
-          <img src="/images/logoo.png" alt="PortalNorth" />
+          <img src="/images/logo2.png" alt="PortalNorth" />
         </Link>
 
         <Profile>
